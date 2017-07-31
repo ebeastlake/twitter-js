@@ -7,6 +7,11 @@ const nunjucks = require('nunjucks');
 
 //var bodyParser = require('body-parser');
 
+nunjucks.configure('views');
+nunjucks.render('index.html', { title: 'An Example', people: [ { name: 'Gandalf' }, { name: 'Frodo'}, { name: 'Hermione' }]}, function(err, output) {
+	console.log(output);
+});
+
 app.listen(3000, function() {
 	console.log('server listening');
 });
