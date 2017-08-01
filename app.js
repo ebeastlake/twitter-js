@@ -7,8 +7,17 @@ const nunjucks = require('nunjucks');
 
 //var bodyParser = require('body-parser');
 
+var locals = {
+	title: 'An Example', 
+	people: [
+		{ name: 'Gandalf' }, 
+		{ name: 'Frodo' }, 
+		{ name: 'Hermoione' }
+	]
+};
+
 nunjucks.configure('views');
-nunjucks.render('index.html', { title: 'An Example', people: [ { name: 'Gandalf' }, { name: 'Frodo'}, { name: 'Hermione' }]}, function(err, output) {
+nunjucks.render('index.html', locals, function(err, output) {
 	console.log(output);
 });
 
