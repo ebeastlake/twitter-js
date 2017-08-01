@@ -7,17 +7,23 @@ const nunjucks = require('nunjucks');
 
 //var bodyParser = require('body-parser');
 
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+nunjucks.configure('views', {noCache: true});
+
 var locals = {
 	title: 'An Example', 
 	people: [
-		{ name: 'Gandalf' }, 
-		{ name: 'Frodo' }, 
-		{ name: 'Hermoione' }
+		{name: 'Gandalf'}, 
+		{name: 'Frodo'}, 
+		{name: 'Hermoione'}
 	]
 };
 
-nunjucks.configure('views');
-nunjucks.render('index.html', locals, function(err, output) {
+
+const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+
+nunjucks.render('index.html', locals, function(err, output) { // Do we need the callback because we're passing a local variable?
 	console.log(output);
 });
 
@@ -32,7 +38,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', function(req, res, next) {
-	res.send('Hello there!');
+	res.render('index', {title: 'Hall of Fame', people: people});
 });
 
 app.get('/news', function(req, res, next) {
