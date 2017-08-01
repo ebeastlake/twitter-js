@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const nunjucks = require('nunjucks');
+const routes=require('./routes');
 
 //var http = require('http');
 //var server = http.createServer();
@@ -27,20 +28,14 @@ nunjucks.render('index.html', locals, function(err, output) { // Do we need the 
 	console.log(output);
 });
 
+//Middleware
+
+app.use('/', routes)
+
+
+
+
+//Listening on the serverc
 app.listen(3000, function() {
 	console.log('server listening');
-});
-
-app.use(function(req, res, next) {
-	console.log('Request type: ' + req.method);
-	console.log('Request URL: ' + req.originalUrl);
-	next();
-});
-
-app.get('/', function(req, res, next) {
-	res.render('index', {title: 'Hall of Fame', people: people});
-});
-
-app.get('/news', function(req, res, next) {
-	res.send('This is the news!');
 });
