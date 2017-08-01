@@ -13,7 +13,7 @@
     </div>
     <div class="col-md-9">
     
-    <ul>
+    <ul id='tweet_list'>
       <!-- display tweets here -->
       {% for tweet in tweets %}
         <li class="bold-name"><a href="/users/{{tweet.name}}">{{tweet.name}}</a></li> <!--Why does the styling need to be inline, not in style.css?-->
