@@ -6,13 +6,25 @@ const tweetBank = require('../tweetBank');
 
 router.get('/', function (req, res) {
   let tweets = tweetBank.list();
-  res.render( 'index', { tweets: tweets } );
+  res.render( 'index', { tweets: tweets, showForm: true, userPage: false} );
 });
 
-router.use(express.static('/Users/ErikaNewland/Fullstack/GH1707/twitter-js/public'))
+router.get('/users/:name', function(req, res) {
+	var name = req.params.name;
+	var tweets = tweetBank.find({name: name});
+	/*var tweets = tweetBank.find(function(twitterUser) {
+		return name.toLowerCase() == twitterUser.name.split(" ").join("").toLowerCase();
+	}); */
+	console.log(tweets);
+	res.render('index', {name: name, tweets: tweets, showForm: true, userPage: true});
+});
 
-// router.get('/stylesheets/style.css', function(req, res){
-//     res.sendFile('/Users/ErikaNewland/Fullstack/GH1707/twitter-js/public/stylesheets/style.css')
-// })
+router.post('/tweets', function(req, res) {
+	console.log(req.body);
+	var name = req.body.name;
+	var text = req.body.text;
+	tweetBank.add(name, text);
+	res.redirect('/');
+});
 
 module.exports = router;

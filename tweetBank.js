@@ -1,13 +1,13 @@
 const _ =  require('lodash');
 var data=[];
-// var data=[{ name: 'Kate Ecma',
-//     content: 'Fullstack Academy is awesome! The instructors are just so cool. #fullstacklove #codedreams' },
-//   { name: 'Karen Ecma',
-//     content: 'Fullstack Academy is funny! The instructors are just so breathtaking. #fullstacklove #codedreams' },
-//   { name: 'Ashi Stackson',
-//     content: 'Fullstack Academy is mindblowing! The instructors are just so awesome. #fullstacklove #codedreams' },
-//   { name: 'Karen Claujure',
-//     content: 'Fullstack Academy is awesome! The instructors are just so amazing. #fullstacklove #codedreams' }];
+/* var data=[{ name: 'Kate Ecma',
+     content: 'Fullstack Academy is awesome! The instructors are just so cool. #fullstacklove #codedreams' },
+   { name: 'Karen Ecma',
+     content: 'Fullstack Academy is funny! The instructors are just so breathtaking. #fullstacklove #codedreams' },
+   { name: 'Ashi Stackson',
+     content: 'Fullstack Academy is mindblowing! The instructors are just so awesome. #fullstacklove #codedreams' },
+   { name: 'Karen Claujure',
+     content: 'Fullstack Academy is awesome! The instructors are just so amazing. #fullstacklove #codedreams' }];*/
 
 function add (name, content) {
   data.push({ name: name, content: content });
@@ -55,6 +55,4 @@ for (let i = 0; i < 10; i++) {
 // console.log(module.exports.find(function(tweet){
 //     return tweet.content.includes("mindblowing");
 // }));
-
-console.log(module.exports.list());
 
